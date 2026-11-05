@@ -28,7 +28,7 @@ class QueueService
 
             $last = Queue::query()
                 ->where('service_id', $service->id)
-                ->where('local_date', $today)
+                ->whereDate('local_date', $today)
                 ->max('number');
 
             return Queue::create([
@@ -53,7 +53,7 @@ class QueueService
             $queue = Queue::query()
                 ->where('branch_id', $counter->branch_id)
                 ->where('status', QueueStatus::Waiting)
-                ->where('local_date', $this->today($counter))
+                ->whereDate('local_date', $this->today($counter))
                 ->orderBy('taken_at')
                 ->orderBy('id')
                 ->lockForUpdate()
