@@ -86,6 +86,7 @@ class QueueController extends Controller
         return [
             'id' => $queue->id,
             'display_number' => $queue->displayNumber(),
+            'service_name' => $queue->service->name,
             'status' => $queue->status->value,
             'counter_id' => $queue->counter_id,
             'local_date' => $queue->local_date->toDateString(),
