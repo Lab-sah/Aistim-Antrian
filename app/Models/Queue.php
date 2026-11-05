@@ -41,4 +41,10 @@ class Queue extends Model
     {
         return $this->belongsTo(Counter::class);
     }
+
+    /** Format tampilan, misal A-001. */
+    public function displayNumber(): string
+    {
+        return sprintf('%s-%03d', $this->service->prefix, $this->number);
+    }
 }
